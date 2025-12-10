@@ -1,0 +1,154 @@
+/* 기본 스타일 */
+body {
+    background-color: #f4f4f4;
+}
+
+section {
+    padding: 60px 5%;
+    text-align: center;
+}
+
+h2 {
+    color: #002d62; /* Navy Blue 계열 */
+    font-size: 2em;
+    margin-bottom: 40px;
+}
+
+/* 1. Hero Section 스타일 */
+.hero-section {
+    /* 웅장한 군함 이미지로 교체 필요 */
+    background-image: url('세종대왕함.jpg'); 
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 150px 0;
+    text-align: center;
+    
+    /* 텍스트 가독성 확보를 위한 투명한 오버레이 */
+    position: relative;
+    z-index: 1;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 45, 98, 0.5); /* Navy Blue 반투명 오버레이 */
+    z-index: -1;
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    margin-bottom: 10px;
+}
+
+.hero-section .subtitle {
+    font-size: 1.5em;
+    font-weight: 300;
+}
+
+/* 2. Specs Section (Grid Layout 핵심) */
+.specs-section {
+    background-color: white;
+}
+
+.specs-grid {
+    display: grid;
+    /* 기본은 3열로 설정 */
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.spec-item {
+    background-color: #e6f0ff; /* 연한 하늘색 */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+
+.spec-item h3 {
+    color: #002d62;
+    margin-top: 0;
+    font-size: 1.2em;
+}
+
+.spec-item:hover {
+    transform: translateY(-5px); /* Hover 효과 추가 */
+}
+
+/* 3. Role Section (Flexbox 활용) */
+.role-section {
+    background-color: #f4f4f4;
+}
+
+.role-content {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.role-image {
+    width: 40%;
+    height: auto;
+    border-radius: 5px;
+    object-fit: cover;
+}
+
+.role-text {
+    width: 60%;
+    font-size: 1.1em;
+}
+
+/* 4. Footer Section 스타일 */
+.footer-section {
+    background-color: #002d62; /* Navy Blue */
+    color: white;
+    padding: 20px 0;
+    font-size: 0.9em;
+}
+
+.footer-section a {
+    color: #a8cfff;
+    text-decoration: none;
+    margin-top: 10px;
+    display: block;
+}
+
+/* === Media Query (반응형 디자인 핵심) === */
+@media (max-width: 768px) {
+    /* Specs Grid: 3열 -> 2열로 변경 */
+    .specs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Role Section: Flex -> Stack (이미지 위, 텍스트 아래) */
+    .role-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .role-image, .role-text {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Specs Grid: 2열 -> 1열로 변경 (모바일 환경) */
+    .specs-grid {
+        grid-template-columns: 1fr;
+    }
+}
